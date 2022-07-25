@@ -9,42 +9,38 @@
 </head>
 <body>
     <section class="edit-post">
-<h3>Create New Post</h3>
-<div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <form action="" method="POST">
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Title</label>
-              <input type="text" name="title" placeholder="Title" class="form-control">
-            </div>
-          </div>
-          <br>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Content</label>
-              <textarea name="content" placeholder="Content ..." cols="30" rows="10" class="form-control"></textarea>
-            </div>
-          </div>
-          <div class="form-group my-4 text-center">
-  
-  
-  
-    <input type="file" id="myFile" name="filename">
-            <button class="btn btn-primary">Create Post</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+
     </section>
     <section class="display-post">
         <article class="post">
 
         </article>
+
         <article class="comment-section">
-            <div class="new-comment"></div>
+            <div class="new-comment">
+
+                <h4 class="p-4 text-uppercase font200">Post a comment</h4>
+                    <form role="form">
+                        <div class="form-group m-4">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
+                        </div>
+                        <div class="form-group m-4">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="john@doe.com">
+                        </div>
+                        <div class="form-group m-4">
+                            <label>Comment</label>
+                            <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+                        </div>
+                        <div class="clearfix text-center">
+                            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                    </form>
+            </div>
+
+
+
             <div class="display-comments"></div>
         </article>
     </section>
