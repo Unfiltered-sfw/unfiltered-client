@@ -4,24 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./add-post.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <section class="edit-post">
-
+        <form>
+            <div class="form-group">
+              <label for="post-title">Post title</label>
+              <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
+            </div>
+            <div class="form-group">
+              <label for="post-content">Post content</label>
+              <textarea type="password" class="form-control" id="post-content" placeholder="Type the content of your post" rows="5"></textarea>
+              <label for="add-img"></label>
+              <input type="file" class="choose-img" id="add-img" placeholder="Choose image">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
     </section>
-    <section class="display-post">
+    <section class="display-post container flex-column">
         <article class="post">
-
+                <div class="row justify-content-center">
+                    <div class="col-md-9 mb40">
+                        <article>
+                            <img src="https://bootdey.com/img/Content/bg1.jpg" alt="" class="img-fluid mb30">
+                            <div class="post-content">
+                                <h3>A smart template that works 24/7 for your company</h3>
+                                <ul class="post-meta list-inline">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-calendar-o"></i> <a href="#">29 June 2017</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-tags"></i> <a href="#">tag1</a>
+                                        <i class="fa fa-tags"></i> <a href="#">tag2</a>
+                                    </li>
+                                </ul>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, </p>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, </p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
         </article>
-
-        <article class="comment-section">
+        <article class="comment-section w-75">
             <div class="new-comment">
-
                 <h4 class="p-4 text-uppercase font200">Post a comment</h4>
                     <form role="form">
-                        <div class="form-group m-4">
+                        <div class="form-group  m-4">
                             <label>Name</label>
                             <input type="text" class="form-control" placeholder="John Doe">
                         </div>
@@ -38,9 +70,6 @@
                         </div>
                     </form>
             </div>
-
-
-
             <div class="display-comments"></div>
         </article>
     </section>
