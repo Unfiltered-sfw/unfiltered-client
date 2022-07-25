@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./add-post.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <section class="edit-post"></section>
+    <section class="edit-post">
+        <form>
+            <div class="form-group">
+              <label for="post-title">Post title</label>
+              <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
+            </div>
+            <div class="form-group">
+              <label for="post-content">Post content</label>
+              <textarea type="password" class="form-control" id="post-content" placeholder="Type the content of your post" rows="5"></textarea>
+              <label for="add-img"></label>
+              <input type="file" class="choose-img" id="add-img" placeholder="Choose image">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </section>
     <section class="display-post">
         <article class="post">
 
