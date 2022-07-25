@@ -1,6 +1,6 @@
 const commentWrapper = document.getElementById('comment-wrapper');
 const targetPostArr = comments.filter(comment => {
-    if (comment.post_id == 0) {
+    if (comment.id == 0) {
         return comment
     }
 });
@@ -18,9 +18,9 @@ targetPost.comments.map((elem, index) => {
                             <div class="reactions">
                                 <div class="reaction-buttons">
                                     <button class="btn rounded-circle"><i class="fa fa-heart red">
-                                    </i><span class="badge badge-pill badge-light">${elem.reactions.heart}</span></button>
-                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow"></i><span class="badge badge-pill badge-light">${elem.reactions.like}</span></button>
-                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue"></i><span class="badge badge-pill badge-light">${elem.reactions.dislike}</span></button>
+                                    </i><span class="badge badge-pill badge-light">${elem.reaction.heart}</span></button>
+                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow"></i><span class="badge badge-pill badge-light">${elem.reaction.like}</span></button>
+                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue"></i><span class="badge badge-pill badge-light">${elem.reaction.dislike}</span></button>
                                 </div>
                             </div>
                         </div>

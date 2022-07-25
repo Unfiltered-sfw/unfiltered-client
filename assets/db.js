@@ -1,39 +1,50 @@
-const comments = [
+const data = [
     {
-        post_id: 0,
-        comments: [
-            {
-                content: 'I like it',
-                reactions: {
-                    heart: 50,
-                    like: 20,
-                    dislike: 1,
-                },
-            },
-            {
-                content: 'I love it',
-                reactions: {
-                    heart: 30,
-                    like: 18,
-                    dislike: 10,
-                },
-            },
-            {
-                content: 'I dont like it , op sucks!',
-                reactions: {
-                    heart: 50,
-                    like: 20,
-                    dislike: 1,
-                }
-            }
-
-        ]
-    }
-]
-
-const posts = [
-
-]
-
-
-module.exports = { posts, comments }
+      id: 0,
+      post: "",
+      reaction: { heart: 0, like: 0, dislike: 0 },
+    },
+    {
+      id: 1,
+      post: "",
+      reaction: { heart: 0, like: 0, dislike: 0 },
+    },
+  ];
+  
+  const comments = [
+    {
+      id: 0,
+      comments: [
+        {
+          content: "string1",
+          reaction: { heart: 0, like: 0, dislike: 0 },
+        },
+        {
+          content: "string2",
+          reaction: { heart: 0, like: 0, dislike: 0 },
+        },
+        {
+          content: "string3",
+          reaction: { heart: 0, like: 0, dislike: 0 },
+        },
+      ],
+    },
+    {
+      id: 1,
+      comments: [
+        {
+          content: "string1",
+          reaction: { heart: 0, like: 0, dislike: 0 },
+        },
+        {
+          content: "string2",
+          reaction: { heart: 0, like: 0, dislike: 0 },
+        },
+        {
+          content: "string3",
+          reaction: { heart: 0, like: 0, dislike: 0 },
+        },
+      ],
+    },
+  ];
+  module.exports = { data, comments };
