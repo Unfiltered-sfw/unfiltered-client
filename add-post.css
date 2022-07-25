@@ -6,3 +6,11 @@
 .choose-img {
     margin-top: 5px;
 }
+
+.display-post {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
