@@ -11,3 +11,18 @@
     margin-top: 5%;
 }
 
+.red {
+    color: red;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.blue {
+    color: blue;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
