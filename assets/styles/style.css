@@ -26,3 +26,7 @@
 .btn:hover {
     transform: scale(1.2);
 }
+
+.comment-section {
+    margin-bottom: 40px;
+}
