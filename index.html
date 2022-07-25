@@ -24,8 +24,8 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </section>
-    <section class="display-post">
-        <article class="post container">
+    <section class="display-post container flex-column">
+        <article class="post">
                 <div class="row justify-content-center">
                     <div class="col-md-9 mb40">
                         <article>
@@ -49,32 +49,28 @@
                     </div>
                 </div>
         </article>
-        <article class="comment-section">
-            <div class="new-comment"></div>
-            <div class="display-comments container">
-                <hr class="mb40">
-                <h4 class="mb40 text-uppercase font500">Comments</h4>
-                <hr class="mb40">
-                <div class="media mb40">
-                    <div class="media-body">
-                        <h5 class="mt-0 font400 clearfix">
-                            Jane Doe
-                        </h5>
-                        <p> Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <a href="#" class="">Reply</a>         
-                    </div>
-                </div>
-                <hr class="mb40">
-                <div class="media mb40">
-                    <div class="media-body">
-                        <h5 class="mt-0 font400 clearfix">
-                            Jane Doe
-                        </h5>
-                        <p> Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <a href="#" class="">Reply</a>         
-                    </div>
-                </div>
+        <article class="comment-section w-75">
+            <div class="new-comment">
+                <h4 class="p-4 text-uppercase font200">Post a comment</h4>
+                    <form role="form">
+                        <div class="form-group  m-4">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
+                        </div>
+                        <div class="form-group m-4">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="john@doe.com">
+                        </div>
+                        <div class="form-group m-4">
+                            <label>Comment</label>
+                            <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+                        </div>
+                        <div class="clearfix text-center">
+                            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                    </form>
             </div>
+            <div class="display-comments"></div>
         </article>
     </section>
 </body>
