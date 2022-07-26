@@ -11,7 +11,7 @@
     <script src="./assets/handlebars-v4.7.7.js" defer></script>
     <script src="./assets/db.js" defer></script>
     <script src="./assets/script.js" defer></script>
-    
+
     <title>Unfiltered</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
         </form>
       </nav>
       <section class="edit-post">        
-            <form>
+            <form action="POST">
             <div class="form-group">
             <label for="post-title">Post title</label>
             <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
@@ -60,11 +60,11 @@
                                 </ul>
                                 <p>{{ posts.post }}</p>
                             </div>
-                            <div class="reactions-count">
+                            <div class="reactions-count post-reactions" >
                                 <button class="btn rounded-circle"><i class="fa fa-heart red">
-                                </i><span class="badge badge-pill badge-light">{{ posts.reaction.heart}}</span></button>
-                                <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow"></i><span class="badge badge-pill badge-light">{{ posts.reaction.like }}</span></button>
-                                <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue"></i><span class="badge badge-pill badge-light">{{ posts.reaction.dislike }}</span></button>
+                                </i><span class="badge badge-pill badge-light" id="ph{{posts.id}}" data-id="{{ posts.id }}" data-reaction="heart">{{ posts.reaction.heart}}</span></button>
+                                <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow" id="pl{{posts.id}}"></i><span class="badge badge-pill badge-light" data-id="{{ posts.id }}" data-reaction="like">{{ posts.reaction.like }}</span></button>
+                                <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue" id="pd{{posts.id}}"></i><span class="badge badge-pill badge-light" data-id="{{ posts.id }}" data-reaction="dislike">{{ posts.reaction.dislike }}</span></button>
                             </div>
                         </article>
                     </div>
