@@ -1,6 +1,44 @@
+const rootUrl = "https://unfiltered-app.herokuapp.com/";
+
+// set state of the app
+const state = {
+    data: [
+    ],
+    comments: [
+    ]
+}
+
 // reaction handlers
-const sendReaction = (reaction, count, id, type) => {
-    console.log(`Changing ${type}'s ${reaction} count to : ${count} for the id= ${id}`)
+const sendReaction = (reaction, count, id, type) => { //either postID or commentID
+    let commOrPost;
+    if( type == 'post') {
+        state.data.filter(post => {
+            if( post.id == id) {
+                state.data[id].reaction[`${reaction}`] = count
+            }            
+        })
+    } else if (type === 'comment') {
+        state.comments.filter((commentArr, index) => {
+            commentArr.comments.filter(comment => {
+                if( comment.id == id) {
+                    state.comments[index].comments[id].reaction[`${reaction}`] = count
+                    console.log(state.comments[index].comments[id].reaction[`${reaction}`])
+
+                }
+            })
+        })
+    }  
+    fetch(rootUrl,
+        {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(state)
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
 }
 const addReactionToPost = (e) => {
     console.log('click')
@@ -23,7 +61,7 @@ const assignCommentsToPosts = (data, comments) => {
         let obj = {}
         obj.posts = post
         comments.filter(item => {
-            if(item.id === post.id) {
+            if(item.postId === post.id) {
                 obj.posts.comments = item.comments
             }
         })
@@ -35,16 +73,12 @@ const assignCommentsToPosts = (data, comments) => {
 
 
 // Fetch data
-const rootUrl = "https://unfiltered-app.herokuapp.com/";
-
 fetch(rootUrl+'posts')
     .then(res => res.json())
     .then(data => {
         fetch(rootUrl+ "comments")
             .then(res => res.json())
             .then(comments => {
-                console.log(data)
-                console.log(comments)
                 const postInfo = document.getElementById("post-template").innerHTML;
                 const template = Handlebars.compile(postInfo);
                 const preparedObj = assignCommentsToPosts(data.data,comments.comments);
@@ -62,7 +96,9 @@ fetch(rootUrl+'posts')
                         span.addEventListener('click', addReactionToPost);
                     }
                 }
+                state.data = data.data
+                state.comments = comments.comments
             })
-    })
-
+        })
+        
 
