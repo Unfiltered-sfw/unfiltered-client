@@ -11,15 +11,15 @@
     margin-top: 5%;
 }
 
-.red {
+[data-color="red"] {
     color: red;
 }
 
-.yellow {
+[data-color="yellow"] {
     color: yellow;
 }
 
-.blue {
+[data-color="blue"] {
     color: blue;
 }
 
