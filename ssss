@@ -1,0 +1,321 @@
+[33mcommit 0047fb638e4bc516bb5911d37f76c6db88042eca[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Tue Jul 26 11:20:40 2022 +0100
+
+    Attempt to display icons on Netlify
+
+[33mcommit 4e4a4e4eef95a2403bb4b578e4c783b9dcc1d6b4[m
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Tue Jul 26 11:07:19 2022 +0100
+
+    Delete handlebars-v4.7.7.js
+
+[33mcommit 7ca652ceba0be79b36d97fdae538affce4880d1d[m
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Tue Jul 26 11:06:48 2022 +0100
+
+    Upload Handlebars script from www
+
+[33mcommit c83b74536e4716c1fa2dd737ab04b995ab3bbacb[m
+Merge: b644a9b d593a64
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Tue Jul 26 11:04:44 2022 +0100
+
+    Merge pull request #34 from Unfiltered-sfw/develop
+    
+    Develop - first version to deploy
+
+[33mcommit d593a64b6ae5b9d1886cc78745d126a507b06868[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: b96b232 e202a20
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Tue Jul 26 10:53:18 2022 +0100
+
+    Merge pull request #33 from Unfiltered-sfw/fetchDataFromServer
+    
+    Correctly fetch data from the server
+
+[33mcommit e202a2021881b65851415f5b4c254dd7af2c56b9[m[33m ([m[1;31morigin/fetchDataFromServer[m[33m, [m[1;32mfetchDataFromServer[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Tue Jul 26 10:45:43 2022 +0100
+
+    Correctly fetch data from the server
+
+[33mcommit b96b232f915f84a8198087ec082e8d33df2e638f[m
+Merge: d6b67e3 dbae4ad
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Tue Jul 26 10:23:45 2022 +0100
+
+    Merge pull request #32 from Unfiltered-sfw/reactionHandlers
+    
+    Add comments reaction handler
+
+[33mcommit dbae4ad816190600da477dada93c82f12401fbb4[m[33m ([m[1;31morigin/reactionHandlers[m[33m, [m[1;32mreactionHandlers[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Tue Jul 26 10:18:29 2022 +0100
+
+    Add comments reaction handler
+
+[33mcommit d6b67e34e26f786b01ea3fcab4a3f1abe2d16e76[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Tue Jul 26 10:03:01 2022 +0100
+
+    Delete node_modules directory
+
+[33mcommit 49908c13d45edb91a7a80ea496995bd95cc69c27[m
+Merge: 1a1037e aa54b86
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Tue Jul 26 10:02:18 2022 +0100
+
+    Merge pull request #31 from Unfiltered-sfw/reactionHandlers
+    
+    Reaction handlers
+
+[33mcommit aa54b861d0a9ecc1a01c8de19ce305e88d5c67fe[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Tue Jul 26 09:57:40 2022 +0100
+
+    Add reactions
+
+[33mcommit bc28a949d18c5496405cef830c7df15b30a9ae70[m[33m ([m[1;31morigin/mapPosts[m[33m, [m[1;32mmapPosts[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 19:11:50 2022 +0100
+
+    Add Handlebars and create posts
+
+[33mcommit 1a1037e3c29808791084dc18ee3e75e0300e1700[m
+Merge: 9a6ed7e fa41d60
+Author: Callum Cheng <97532014+CallumCheng@users.noreply.github.com>
+Date:   Mon Jul 25 15:28:28 2022 +0100
+
+    Merge pull request #28 from Unfiltered-sfw/file-structure
+    
+    Add logic behind the comments display
+
+[33mcommit fa41d60c96315fad655bbd87789aa5f493f000a0[m[33m ([m[1;31morigin/file-structure[m[33m, [m[1;32mfile-structure[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 15:27:27 2022 +0100
+
+    Add server db.js
+
+[33mcommit c1b99763f88fe2183765af38e614f1a1f8b7cf81[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 15:16:45 2022 +0100
+
+    Add logic behind the comments display
+
+[33mcommit 9a6ed7ea40a2d5060ec406eaf702e16b6baa50c8[m
+Merge: f5c9781 d54ea25
+Author: Bishal <45371588+B9ary01@users.noreply.github.com>
+Date:   Mon Jul 25 14:04:05 2022 +0100
+
+    Merge pull request #25 from Unfiltered-sfw/file-structure
+    
+    File structure
+
+[33mcommit d54ea25849c0cd105f9aa160e2581783f0858bf7[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 13:32:35 2022 +0100
+
+    Fix link
+
+[33mcommit 1512be74d8228b4151ea552fbcff52ce50cb84f4[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 13:31:25 2022 +0100
+
+    Add file structure and link files
+
+[33mcommit f5c978194ed952fbc8fb44eae13472cccf34d6f2[m
+Merge: 3263f48 780a867
+Author: Callum Cheng <97532014+CallumCheng@users.noreply.github.com>
+Date:   Mon Jul 25 13:19:06 2022 +0100
+
+    Merge pull request #24 from Unfiltered-sfw/agi/reactions
+    
+    Remove doubled reactions
+
+[33mcommit 780a867e94810d8680d47a9d49b80650abeb071b[m[33m ([m[1;31morigin/agi/reactions[m[33m, [m[1;32magi/reactions[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 13:12:59 2022 +0100
+
+    Remove doubled reactions
+
+[33mcommit 3263f4837c97278f1672cb6560c94f301f1e50a6[m
+Merge: 06886a3 75450ab
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 12:48:36 2022 +0100
+
+    Merge pull request #23 from Unfiltered-sfw/agi/reactions
+    
+    Agi/reactions
+
+[33mcommit 75450ab1874dd54dab0a353b39073a31ddcdc39d[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 12:43:55 2022 +0100
+
+    Add navbar
+
+[33mcommit 6666483d54dbed50300929ed74f90a4f3efae8e7[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 12:38:46 2022 +0100
+
+    Add reactions to posts and comments
+
+[33mcommit 06886a3bd8235cb2c854dee829ebf9f91ea99b37[m
+Merge: e4603e0 4bdc6f3
+Author: Bishal <45371588+B9ary01@users.noreply.github.com>
+Date:   Mon Jul 25 12:06:42 2022 +0100
+
+    Merge pull request #20 from Unfiltered-sfw/agi/display-comment
+    
+    Fix comment section
+
+[33mcommit 4bdc6f302604d48ed0e1a943608b8733433276e6[m[33m ([m[1;31morigin/agi/display-comment[m[33m, [m[1;32magi/display-comment[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 12:03:47 2022 +0100
+
+    Fix comment section
+
+[33mcommit e4603e0b409136513f5d534be398308ab82ee328[m
+Merge: 03fad1a 0ba6937
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 11:49:58 2022 +0100
+
+    Merge pull request #19 from Unfiltered-sfw/commentSection
+    
+    Comment section
+
+[33mcommit 0ba693772b84706612930b10a55054ca34f52c60[m
+Merge: c5a4e73 03fad1a
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 11:48:35 2022 +0100
+
+    Merge branch 'develop' into commentSection
+
+[33mcommit c5a4e731f0c333e8c08f988ddcb010c9fce4393a[m[33m ([m[1;31morigin/commentSection[m[33m, [m[1;32mcommentSection[m[33m)[m
+Author: B9ary01 <bishalrai111@yahoo.com>
+Date:   Mon Jul 25 11:26:10 2022 +0100
+
+    add new comment section
+
+[33mcommit 03fad1a2ffed17c11b14059fe05b58eaa189633c[m
+Merge: 05b052e d03c932
+Author: Bishal <45371588+B9ary01@users.noreply.github.com>
+Date:   Mon Jul 25 11:20:19 2022 +0100
+
+    Merge pull request #16 from Unfiltered-sfw/agi/display-comment
+    
+    Add display comment section
+
+[33mcommit d03c932a45d01cd1b6a35a56b97ff8d034403132[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 11:17:13 2022 +0100
+
+    Add display comment section
+
+[33mcommit d3ecf2cc793dbb075a7682f65f3f5bdfc8a7de43[m[33m ([m[1;31morigin/newPost[m[33m)[m
+Author: B9ary01 <bishalrai111@yahoo.com>
+Date:   Mon Jul 25 11:07:20 2022 +0100
+
+    add new post section
+
+[33mcommit 05b052ef3274211e7d31392b6513d51119639833[m
+Merge: 804bfee 3c22940
+Author: Bishal <45371588+B9ary01@users.noreply.github.com>
+Date:   Mon Jul 25 10:54:55 2022 +0100
+
+    Merge pull request #14 from Unfiltered-sfw/agi/display-post
+    
+    Add displaying post feature v1
+
+[33mcommit 3c22940957096731fc0e0fa934ae66552dd0f504[m[33m ([m[1;31morigin/agi/display-post[m[33m, [m[1;32magi/display-post[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 10:43:14 2022 +0100
+
+    Add displaying post feature v1
+
+[33mcommit 804bfee9db6ca1a4f62b5a3c48b8ae79fb0a4999[m
+Merge: cabe67f d246da4
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Mon Jul 25 10:29:33 2022 +0100
+
+    Merge pull request #13 from Unfiltered-sfw/agi/new-post
+    
+    Add first version of new post section
+
+[33mcommit d246da4d0b024111b0cf93a7423b306942ec0255[m[33m ([m[1;31morigin/agi/new-post[m[33m, [m[1;32magi/new-post[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 10:24:20 2022 +0100
+
+    Add first version of new post section
+
+[33mcommit cabe67fd19011c5f8173bc1b4da8ad7943537433[m
+Merge: 7972faf b644a9b
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Mon Jul 25 10:04:42 2022 +0100
+
+    Merge pull request #12 from Unfiltered-sfw/main
+    
+    Update develop
+
+[33mcommit b644a9b8e6a813889186f070077efa39791a82db[m
+Merge: 760196b c5d88ee
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 10:02:01 2022 +0100
+
+    Merge pull request #11 from Unfiltered-sfw/add-bootstrap
+    
+    Add bootstrap
+
+[33mcommit c5d88eea0bd9348ea07d724d5a531dc1ff4a2b18[m[33m ([m[1;31morigin/add-bootstrap[m[33m)[m
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 09:57:30 2022 +0100
+
+    Update index.html
+
+[33mcommit 7972faf25b492d5fb593f645866cf619e75504d8[m
+Merge: 0d88e4b 3f0eeab
+Author: Callum Cheng <97532014+CallumCheng@users.noreply.github.com>
+Date:   Mon Jul 25 09:54:07 2022 +0100
+
+    Merge pull request #9 from Unfiltered-sfw/add-bootstrap
+    
+    Merge pull request #8 from Unfiltered-sfw/develop
+
+[33mcommit 3f0eeabec4988a64888bb88357dcfcd624137910[m
+Merge: 1e3ee61 0d88e4b
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 09:52:34 2022 +0100
+
+    Merge pull request #8 from Unfiltered-sfw/develop
+    
+    Merge pull request #7 from Unfiltered-sfw/index-page
+
+[33mcommit 760196bf812bc87d1418ae5e0d9376b887adb7c4[m
+Merge: 3c5be56 1e3ee61
+Author: Aggie Skorska <57585879+agiskorska@users.noreply.github.com>
+Date:   Mon Jul 25 09:37:32 2022 +0100
+
+    Merge pull request #6 from Unfiltered-sfw/index-page
+    
+    Create index.html structure
+
+[33mcommit 0d88e4b4d44bc2c07c094feeb32b84e9152c0b50[m
+Merge: 3c5be56 1e3ee61
+Author: Jason Paul Brooks <85590441+madCakes@users.noreply.github.com>
+Date:   Mon Jul 25 09:35:35 2022 +0100
+
+    Merge pull request #7 from Unfiltered-sfw/index-page
+    
+    Create index.html structure
+
+[33mcommit 1e3ee61e448775feaf4fe26ce660b12e946a2932[m[33m ([m[1;31morigin/index-page[m[33m, [m[1;32mindex-page[m[33m, [m[1;32madd-bootstrap[m[33m)[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 09:32:40 2022 +0100
+
+    Create index.html structure
+
+[33mcommit 3c5be56e3bf7e97e8f09f1090f9fef64edb70c74[m
+Author: agiskorska <skorskaga@gmail.com>
+Date:   Mon Jul 25 09:15:05 2022 +0100
+
+    first commit
