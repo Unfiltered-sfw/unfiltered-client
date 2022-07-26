@@ -10,6 +10,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
     <script src="./assets/script.js" defer></script>
+    <script src="./assets/newpost.js" defer></script>
 
     <title>Unfiltered</title>
 </head>
@@ -22,7 +23,7 @@
         </form>
       </nav>
       <section class="edit-post">        
-            <form action="POST">
+            <form action="POST" id="form">
             <div class="form-group">
             <label for="post-title">Post title</label>
             <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
@@ -41,13 +42,13 @@
     <script type="text/x-handlebars-template" id="post-template">
         {{#each posts}}
 
-        <article class="post">
+        <article class="post" id="post">
                 <div class="row justify-content-center">
                     <div class="col-md-9 mb40">
                         <article>
                             <img src="https://bootdey.com/img/Content/bg1.jpg" alt="" class="img-fluid mb30">
                             <div class="post-content">
-                                <h3>{{ posts.title }}</h3>
+                                <h3 id="post-title">{{ posts.title }}</h3>
                                 <ul class="post-meta list-inline">
                                     <li class="list-inline-item">
                                         <i class="fa fa-calendar-o"></i> <a href="#">29 June 2017</a>
