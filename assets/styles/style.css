@@ -1,0 +1,32 @@
+.edit-post {
+    width: 60%;
+    margin: auto;
+}
+
+.choose-img {
+    margin-top: 5px;
+}
+
+.display-post {
+    margin-top: 5%;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.blue {
+    color: blue;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
+
+.comment-section {
+    margin-bottom: 40px;
+}
