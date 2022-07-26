@@ -1,32 +1,50 @@
-const commentWrapper = document.getElementById('comment-wrapper');
-const targetPostArr = comments.filter(comment => {
-    if (comment.id == 0) {
-        return comment
+// Handlebars handlers
+
+const assignCommentsToPosts = (data, comments) => {
+    let arr = [];
+    for(let post of data) {
+        let obj = {}
+        obj.posts = post
+        comments.filter(item => {
+            if(item.id === post.id) {
+                obj.posts.comments = item.comments
+            }
+        })
+        arr.push(obj)
     }
-});
-const targetPost = targetPostArr[0];
-targetPost.comments.map((elem, index) => {
-    console.log(index)
-    const node = `
-    <hr class="mb40">
-                    <div class="media mb40">
-                        <div class="media-body" id="comment-wrapper">
-                            <h5 class="mt-0 font400 clearfix">
-                                Jane Doe
-                            </h5>
-                            <p>${elem.content}</p>
-                            <div class="reactions">
-                                <div class="reaction-buttons">
-                                    <button class="btn rounded-circle"><i class="fa fa-heart red">
-                                    </i><span class="badge badge-pill badge-light">${elem.reaction.heart}</span></button>
-                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow"></i><span class="badge badge-pill badge-light">${elem.reaction.like}</span></button>
-                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue"></i><span class="badge badge-pill badge-light">${elem.reaction.dislike}</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    `
-    commentWrapper.insertAdjacentHTML('afterend', node);
+    return arr
+}
 
+const postInfo = document.getElementById("post-template").innerHTML;
+const template = Handlebars.compile(postInfo);
 
+const preparedObj = assignCommentsToPosts(data,comments);
+const postData = template({
+    posts: preparedObj
 })
+
+document.getElementById('post-wrapper').innerHTML += postData
+
+// reaction handlers
+const sendReaction = (reaction, count, id) => {
+    console.log(`Changing ${reaction} count to : ${count} for the id= ${id}`)
+}
+const addReactionToPost = (e) => {
+    e.preventDefault();
+    const span = e.currentTarget.querySelector('span')
+    const reaction = span.dataset.reaction
+    const id = span.dataset.id
+    console.log(reaction, id)
+    const currentCount = parseInt(span.innerText)
+    const newCount = currentCount + 1;
+    sendReaction(reaction, newCount, id)
+}
+
+const reactionGrandparent = document.querySelectorAll('.post-reactions')
+
+for (let block of reactionGrandparent ) {
+    const spans = block.querySelectorAll('button');
+    for (let span of spans) {
+        span.addEventListener('click', addReactionToPost);
+    }
+}
