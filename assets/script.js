@@ -26,23 +26,25 @@ const postData = template({
 document.getElementById('post-wrapper').innerHTML += postData
 
 // reaction handlers
-const sendReaction = (reaction, count, id) => {
-    console.log(`Changing ${reaction} count to : ${count} for the id= ${id}`)
+const sendReaction = (reaction, count, id, type) => {
+    console.log(`Changing ${type}'s ${reaction} count to : ${count} for the id= ${id}`)
 }
 const addReactionToPost = (e) => {
     e.preventDefault();
     const span = e.currentTarget.querySelector('span')
     const reaction = span.dataset.reaction
     const id = span.dataset.id
-    console.log(reaction, id)
+    const type = span.dataset.type
     const currentCount = parseInt(span.innerText)
     const newCount = currentCount + 1;
-    sendReaction(reaction, newCount, id)
+    span.textContent = newCount;
+    sendReaction(reaction, newCount, id, type)
 }
 
-const reactionGrandparent = document.querySelectorAll('.post-reactions')
+const postReactionParent = document.querySelectorAll('.post-reactions')
 
-for (let block of reactionGrandparent ) {
+const commentReactionParent = document.querySelectorAll('comment-reaction')
+for (let block of postReactionParent ) {
     const spans = block.querySelectorAll('button');
     for (let span of spans) {
         span.addEventListener('click', addReactionToPost);

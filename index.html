@@ -62,9 +62,9 @@
                             </div>
                             <div class="reactions-count post-reactions" >
                                 <button class="btn rounded-circle"><i class="fa fa-heart red">
-                                </i><span class="badge badge-pill badge-light" id="ph{{posts.id}}" data-id="{{ posts.id }}" data-reaction="heart">{{ posts.reaction.heart}}</span></button>
-                                <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow" id="pl{{posts.id}}"></i><span class="badge badge-pill badge-light" data-id="{{ posts.id }}" data-reaction="like">{{ posts.reaction.like }}</span></button>
-                                <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue" id="pd{{posts.id}}"></i><span class="badge badge-pill badge-light" data-id="{{ posts.id }}" data-reaction="dislike">{{ posts.reaction.dislike }}</span></button>
+                                </i><span class="badge badge-pill badge-light" id="ph{{posts.id}}" data-type="post" data-id="{{ posts.id }}" data-reaction="heart">{{ posts.reaction.heart}}</span></button>
+                                <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow" id="pl{{posts.id}}"></i><span class="badge badge-pill badge-light" data-type="post" data-id="{{ posts.id }}" data-reaction="like">{{ posts.reaction.like }}</span></button>
+                                <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue" id="pd{{posts.id}}"></i><span class="badge badge-pill badge-light" data-type="post" data-id="{{ posts.id }}" data-reaction="dislike">{{ posts.reaction.dislike }}</span></button>
                             </div>
                         </article>
                     </div>
@@ -83,11 +83,11 @@
                         <div class="media-body">
                             <p>{{ content }}</p>
                             <div class="reactions">
-                                <div class="reaction-buttons">
+                                <div class="reactions-count post-reactions" >
                                     <button class="btn rounded-circle"><i class="fa fa-heart red">
-                                    </i><span class="badge badge-pill badge-light">{{ reaction.heart }}</span></button>
-                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow"></i><span class="badge badge-pill badge-light">{{ reaction.like }}</span></button>
-                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue"></i><span class="badge badge-pill badge-light">{{ reaction.dislike }}</span></button>
+                                    </i><span class="badge badge-pill badge-light" id="ch{{id}}" data-type="comment" data-id="{{ id }}" data-reaction="heart">{{ reaction.heart}}</span></button>
+                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-up yellow" id="cl{{id}}"></i><span class="badge badge-pill badge-light" data-type="comment" data-id="{{ id }}" data-reaction="like">{{ reaction.like }}</span></button>
+                                    <button class="btn rounded-circle"><i class="fa fa-thumbs-down blue" id="cd{{id}}"></i><span class="badge badge-pill badge-light" data-type="comment" data-id="{{ id }}" data-reaction="dislike">{{ reaction.dislike }}</span></button>
                                 </div>
                             </div>
                         </div>
