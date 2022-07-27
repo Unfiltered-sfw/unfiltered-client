@@ -9,7 +9,7 @@ const state = {
 }
 
 // reaction handlers
-const sendReaction = (reaction, count, id, type) => { //either postID or commentID
+const sendReaction = (reaction, count, id, type) => { 
     let suffix =''
     if( type == 'post') {
         suffix = 'posts'
@@ -28,6 +28,8 @@ const sendReaction = (reaction, count, id, type) => { //either postID or comment
             })
         })
     }  
+
+    //TODO this will have to go to a separate fun for testing sendReaction
     fetch(rootUrl + suffix,
     {
         headers: {
@@ -49,8 +51,8 @@ const addReactionToPost = (e) => {
     const id = span.dataset.id
     const type = span.dataset.type
     const currentCount = parseInt(span.innerText)
-    const newCount = currentCount + 1;
-    span.textContent = newCount;
+    const newCount = currentCount + 1
+    span.textContent = newCount
     sendReaction(reaction, newCount, id, type)
 }
 
@@ -58,6 +60,7 @@ const addReactionToPost = (e) => {
 const createNewPost = (e) => {
     e.preventDefault();
     id = state.data.length
+
     const newDataObject = {
         id: id,
         title: e.target.elements[0].value,
@@ -76,12 +79,14 @@ const createNewPost = (e) => {
 
         ]
     }
+
     const newData = {data: [newDataObject]}
     const newComm = {comments: [newCommentsObject]}
     state.data.push(newDataObject)
     state.comments.push(newCommentsObject)
     printContent(newData, newComm)
 
+   //TODO this will have to go to a separate fun for testing purposes
     fetch(rootUrl + 'posts', {
         headers: {
             'Accept': 'application/json',
@@ -115,23 +120,37 @@ const assignCommentsToPosts = (data, comments) => {
     return arr
 }
 
+const setGiphyEventListeners = () => {
+    const giphyDiv = document.querySelectorAll('.giphy-button')
+    for(let div of giphyDiv) {
+        div.addEventListener('click', e => {
+            e.preventDefault()
+            const parent = e.target.parentNode;
+            let searchString = parent.childNodes[3].value
+            searchGiphy(searchString)
+        })
+    }
+}
+
+// Prints fetched content to the website, also updates new posts when added
 const printContent = (data, comments) => {
     const postInfo = document.getElementById("post-template").innerHTML;
-                const template = Handlebars.compile(postInfo);
-                const preparedObj = assignCommentsToPosts(data.data,comments.comments);
-                const postData = template({
-                    posts: preparedObj
-                })  
-                document.getElementById('post-wrapper').innerHTML += postData
-                
-                const postReactionParent = document.querySelectorAll('.post-reactions')
+    const template = Handlebars.compile(postInfo);
+    const preparedObj = assignCommentsToPosts(data.data,comments.comments);
+    const postData = template({
+        posts: preparedObj
+    })  
+    document.getElementById('post-wrapper').innerHTML += postData
+    
+    const postReactionParent = document.querySelectorAll('.post-reactions')
 
-                for (let block of postReactionParent ) {
-                    const spans = block.querySelectorAll('button');
-                    for (let span of spans) {
-                        span.addEventListener('click', addReactionToPost);
-                    }
-                }
+    for (let block of postReactionParent ) {
+        const spans = block.querySelectorAll('button')
+        for (let span of spans) {
+            span.addEventListener('click', addReactionToPost)
+        }
+    }
+    setGiphyEventListeners()
 }
 
 // Fetch data
@@ -150,10 +169,35 @@ fetch(rootUrl+'posts')
         })
         
 
+        
+
+        
+const displayGiphy = (data) => {
+    const arr = []
+    for (let i=0; i<12; i++){
+        arr.push(data.data[i].embed_url)
+    }
+    //TODO here paste the function from the guys
+    console.log(arr)
+    return arr
+}
 
 
-// module.exports = {
-//     sendReaction,
-//     addReactionToPost,
-//     assignCommentsToPosts
-// }
+const searchGiphy = (searchString) => {
+    const API_KEY = "7GyDNRXixRNrwh8PGwOdMCLZfNoM2Wf6"
+
+    fetch("https://api.giphy.com/v1/gifs/search?api_key="+API_KEY+"&q="+searchString)
+    .then(res => res.json())
+    .then((data) => {
+        displayGiphy(data)})
+}
+
+// For the test suite
+if (typeof module !== 'undefined') {
+    module.exports = {
+        sendReaction,
+        addReactionToPost,
+        assignCommentsToPosts
+    }
+}
+
