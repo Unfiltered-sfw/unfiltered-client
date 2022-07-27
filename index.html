@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
     <script src="./assets/script.js" defer></script>
 
+
     <title>Unfiltered</title>
 </head>
 <body>
@@ -22,14 +23,14 @@
         </form>
       </nav>
       <section class="edit-post">        
-            <form action="POST">
+            <form action="POST" id="form" data-type="post">
             <div class="form-group">
             <label for="post-title">Post title</label>
-            <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
+            <input type="text" class="form-control" id="post-title" placeholder="Enter the title (max 100 characters)" maxlength="100">
             </div>
             <div class="form-group">
             <label for="post-content">Post content</label>
-            <textarea type="password" class="form-control" id="post-content" placeholder="Type the content of your post" rows="5"></textarea>
+            <textarea type="password" class="form-control" id="post-content" placeholder="Type the content of your post (max 500 characters)" rows="5" maxlength="500"></textarea>
             <label for="add-img"></label>
             <input type="file" class="choose-img" id="add-img" placeholder="Choose image">
             </div>
@@ -41,7 +42,7 @@
     <script type="text/x-handlebars-template" id="post-template">
         {{#each posts}}
 
-        <article class="post">
+        <article class="post" id="post">
                 <div class="row justify-content-center">
                     <div class="col-md-9 mb40">
                         <article>
@@ -84,7 +85,7 @@
                             <div class="reactions">
                                 <div class="reactions-count post-reactions" >
                                     <button class="btn rounded-circle"><i class="fa fa-heart" data-color="red">
-                                    </i><span class="badge badge-pill badge-light" id="ch{{id}}" data-type="comment" data-id="{{ id }}" data-reaction="heart">{{ reaction.heart}}</span></button>
+                                    </i><span class="badge badge-pill badge-light" data-type="comment" data-id="{{ id }}" data-reaction="heart" id="ch{{id}}" >{{ reaction.heart}}</span></button>
                                     <button class="btn rounded-circle"><i class="fa fa-thumbs-up" data-color="yellow" id="cl{{id}}"></i><span class="badge badge-pill badge-light" data-type="comment" data-id="{{ id }}" data-reaction="like">{{ reaction.like }}</span></button>
                                     <button class="btn rounded-circle"><i class="fa fa-thumbs-down" data-color="blue" id="cd{{id}}"></i><span class="badge badge-pill badge-light" data-type="comment" data-id="{{ id }}" data-reaction="dislike">{{ reaction.dislike }}</span></button>
                                 </div>
@@ -95,7 +96,7 @@
                     </div>
                 <div class="new-comment">
                     <h4 class="p-4 text-uppercase font200">Post a comment</h4>
-                    <form role="form">
+                    <form role="form" data-type="comment" data-belongs="{{posts.id}}">
                         <div class="form-group  m-4">
                             <label>Name</label>
                             <input type="text" class="form-control" placeholder="John Doe">
@@ -106,10 +107,16 @@
                         </div>
                         <div class="form-group m-4">
                             <label>Comment</label>
-                            <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Comment (max 300 characters)" maxlength="300"></textarea>
                         </div>
+                        <div class="giphy form-group  m-4 ">
+                            <label>Search giphy</label>
+                            <input type="text" class="form-control searchString" placeholder="Search" data-giphy="giphy-search" >
+                            <button type="button" class="btn btn-secondary btn-lg giphy-button" data-giphy="giphy-button">Search</button>
+                        </div>                        
+
                         <div class="clearfix text-center">
-                            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -117,5 +124,7 @@
         </article>
         {{/each}}
     </script>
+
+
 </body>
 </html>

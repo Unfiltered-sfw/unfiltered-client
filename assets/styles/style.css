@@ -27,6 +27,20 @@
     transform: scale(1.2);
 }
 
-.comment-section {
+.btn {
     margin-bottom: 40px;
+}
+
+.giphy {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-img > * {
+    flex-basis: 25%;
 }
