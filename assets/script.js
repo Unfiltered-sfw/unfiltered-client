@@ -1,4 +1,4 @@
-const rootUrl = "https://unfiltered-app.herokuapp.com/";
+const rootUrl = "http://localhost:3000/";
 
 // set state of the app
 const state = {
@@ -39,7 +39,9 @@ const sendReaction = (reaction, count, id, type) => {
         method: 'POST',
         body: JSON.stringify(state.comments)
     })
-    .then(res => console.log(res))
+    .then(res => {
+        console.log(res)
+    })
     .catch(err => console.log(err))
 }
 
@@ -56,51 +58,85 @@ const addReactionToPost = (e) => {
     sendReaction(reaction, newCount, id, type)
 }
 
-// Set new post handlers
-const createNewPost = (e) => {
-    e.preventDefault();
-    id = state.data.length
-
-    const newDataObject = {
-        id: id,
-        title: e.target.elements[0].value,
-        post: e.target.elements[1].value,
-        reaction: {
-            heart: 0,
-            like: 0,
-            dislike: 0,
-        }
-    }
-
-    const newCommentsObject = {
-        postId: id,
-        name: '',
-        comments: [
-
-        ]
-    }
-
-    const newData = {data: [newDataObject]}
-    const newComm = {comments: [newCommentsObject]}
-    state.data.push(newDataObject)
-    state.comments.push(newCommentsObject)
-    printContent(newData, newComm)
-
-   //TODO this will have to go to a separate fun for testing purposes
-    fetch(rootUrl + 'posts', {
+const postNewEntry = (suffix, objToSend) => {
+    fetch(rootUrl + suffix, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify(state.data)
+            body: JSON.stringify(objToSend)
     })
     .then(res => console.log(res))
     .catch(err => console.log(err))
-
 }
 
-form.addEventListener('submit', createNewPost);
+// Set new post handlers
+const createNewEntry = (e) => {
+    e.preventDefault();
+    const postOrComment = e.target.dataset.type
+    let objToSend = {}
+    let suffix = 'posts'
+    let id
+
+    if(postOrComment === 'post') {
+        const newDataObject = {
+            id: state.data.length,
+            title: e.target.elements[0].value,
+            post: e.target.elements[1].value,
+            reaction: {
+                heart: 0,
+                like: 0,
+                dislike: 0,
+            }
+        }
+        objToSend = {data: state.data}
+        suffix = 'posts'
+        state.data.push(newDataObject)
+        postNewEntry(suffix, objToSend)
+
+    } else if (postOrComment === 'comment') {
+        const postId = e.target.dataset.belongs
+        let doesExist = false
+        id = Math.floor(Math.random()*100000)
+        const newCommentsObject = {
+            postId: postId,
+            name: '',
+            comments: [
+                
+            ]
+        }
+
+        const newComment = {
+            id: id,
+            content: e.target.elements[2].value,
+            reaction: {
+                heart: 0,
+                like: 0,
+                dislike: 0,
+            }
+        }
+        state.comments.filter((post, index) => {
+            if(post.postId == postId) {
+                state.comments[index].comments.push(newComment)
+                doesExist = true
+            }
+        })
+        if (!doesExist) {
+            newCommentsObject.comments.push(newComment)
+            state.comments.push(newCommentsObject)
+        }
+        objToSend = {comments: state.comments}
+        suffix = 'comments'
+        console.log(objToSend)
+        postNewEntry(suffix, objToSend)
+
+
+    } else {
+        alert('sorry, this function is not yet handled by our ser')
+    }
+
+}
 
 
 // Handlebars handlers
@@ -120,6 +156,15 @@ const assignCommentsToPosts = (data, comments) => {
     return arr
 }
 
+// Set Event Listeners needed
+
+const setFormsEventListeners = () => {
+    const forms = document.querySelectorAll("form")
+    for (let form of forms) {
+        form.addEventListener('submit', createNewEntry);
+    }
+}
+
 const setGiphyEventListeners = () => {
     const giphyDiv = document.querySelectorAll('.giphy-button')
     for(let div of giphyDiv) {
@@ -129,6 +174,16 @@ const setGiphyEventListeners = () => {
             let searchString = parent.childNodes[3].value
             searchGiphy(searchString)
         })
+    }
+}
+
+const setReactionListeners = () => {       
+    const postReactionParent = document.querySelectorAll('.post-reactions')
+    for (let block of postReactionParent ) {
+        const spans = block.querySelectorAll('button')
+        for (let span of spans) {
+            span.addEventListener('click', addReactionToPost)
+        }
     }
 }
 
@@ -142,28 +197,20 @@ const printContent = (data, comments) => {
     })  
     document.getElementById('post-wrapper').innerHTML += postData
     
-    const postReactionParent = document.querySelectorAll('.post-reactions')
-
-    for (let block of postReactionParent ) {
-        const spans = block.querySelectorAll('button')
-        for (let span of spans) {
-            span.addEventListener('click', addReactionToPost)
-        }
-    }
+    setReactionListeners()
     setGiphyEventListeners()
+    setFormsEventListeners()
 }
 
 // Fetch data
 fetch(rootUrl+'posts')
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         fetch(rootUrl+ "comments")
             .then(res => res.json())
             .then(comments => {
                 state.data = data.data
                 state.comments = comments.comments
-                console.log(state.data)
                 printContent(data, comments)
             })
         })
@@ -178,7 +225,6 @@ const displayGiphy = (data) => {
         arr.push(data.data[i].embed_url)
     }
     //TODO here paste the function from the guys
-    console.log(arr)
     return arr
 }
 

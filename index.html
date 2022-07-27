@@ -23,7 +23,7 @@
         </form>
       </nav>
       <section class="edit-post">        
-            <form action="POST" id="form">
+            <form action="POST" id="form" data-type="post">
             <div class="form-group">
             <label for="post-title">Post title</label>
             <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
@@ -96,7 +96,7 @@
                     </div>
                 <div class="new-comment">
                     <h4 class="p-4 text-uppercase font200">Post a comment</h4>
-                    <form role="form">
+                    <form role="form" data-type="comment" data-belongs="{{posts.id}}">
                         <div class="form-group  m-4">
                             <label>Name</label>
                             <input type="text" class="form-control" placeholder="John Doe">
@@ -116,7 +116,7 @@
                         </div>                        
 
                         <div class="clearfix text-center">
-                            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
                     </form>
                 </div>
