@@ -109,7 +109,6 @@ const createNewEntry = (e) => {
                 
             ]
         }
-        debugger
         const newComment = {
             id: id,
             content: e.target.elements[2].value,
