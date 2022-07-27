@@ -22,6 +22,8 @@ function createNewPost(e) {
     form.appendChild(newPost);
     // form.appendChild(reactions)
 
+    
+
    console.log(newTitle);
    console.log(newPost);
 }
