@@ -152,9 +152,8 @@ fetch(rootUrl+'posts')
 
 
 
-module.exports = {
-    sendReaction,
-    addReactionToPost,
-    assignCommentsToPosts
-
-}
+// module.exports = {
+//     sendReaction,
+//     addReactionToPost,
+//     assignCommentsToPosts
+// }
