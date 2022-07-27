@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
     <script src="./assets/script.js" defer></script>
 
+
     <title>Unfiltered</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
         </form>
       </nav>
       <section class="edit-post">        
-            <form action="POST" id="form">
+            <form action="POST" id="form" data-type="post">
             <div class="form-group">
             <label for="post-title">Post title</label>
             <input type="text" class="form-control" id="post-title" placeholder="Enter the title">
@@ -95,7 +96,7 @@
                     </div>
                 <div class="new-comment">
                     <h4 class="p-4 text-uppercase font200">Post a comment</h4>
-                    <form role="form">
+                    <form role="form" data-type="comment" data-belongs="{{posts.id}}">
                         <div class="form-group  m-4">
                             <label>Name</label>
                             <input type="text" class="form-control" placeholder="John Doe">
@@ -108,8 +109,14 @@
                             <label>Comment</label>
                             <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
                         </div>
+                        <div class="giphy form-group  m-4 ">
+                            <label>Search giphy</label>
+                            <input type="text" class="form-control searchString" placeholder="Search" data-giphy="giphy-search" >
+                            <button type="button" class="btn btn-secondary btn-lg giphy-button" data-giphy="giphy-button">Search</button>
+                        </div>                        
+
                         <div class="clearfix text-center">
-                            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -117,5 +124,7 @@
         </article>
         {{/each}}
     </script>
+
+
 </body>
 </html>
