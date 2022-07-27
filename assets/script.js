@@ -76,7 +76,9 @@ const postNewEntry = (suffix, objToSend) => {
 
 // Set new post handlers
 const createNewEntry = (e) => {
-    e.preventDefault();
+    if (typeof e.preventDefault == 'function') {
+        e.preventDefault();
+    }
     const postOrComment = e.target.dataset.type
     let objToSend = {}
     let suffix = 'posts'
@@ -174,7 +176,7 @@ const setGiphyEventListeners = () => {
             e.preventDefault()
             const parent = e.target.parentNode;
             let searchString = parent.childNodes[3].value
-            searchGiphy(searchString)
+            searchGiphy(searchString, parent)
         })
     }
 }
@@ -219,25 +221,48 @@ fetch(rootUrl+'posts')
         
 
         
-
-        
-const displayGiphy = (data) => {
+const postImage = (src) => {
+    console.log(src)
+    const e = {
+        target: {
+            dataset: {
+                type: 'comment',
+                belongs: 0
+            },
+            elements : [
+                {},
+                {},
+                { value : src}
+            ]
+        }
+    }  
+    createNewEntry(e)
+}
+    
+const displayGiphy = (data, div) => {
     const arr = []
     for (let i=0; i<12; i++){
         arr.push(data.data[i].embed_url)
     }
+    console.log(arr)
+    const wrapper = document.createElement('div')
+    wrapper.classList.add("flex-img")
+    arr.map(href => {
+        wrapper.innerHTML += "<img role='button' onclick='postImage(this.src)' src='"+href+"'>"
+    })
+    div.parentNode.insertBefore(wrapper, div.nextSibling)
     //TODO here paste the function from the guys
     return arr
 }
 
 
-const searchGiphy = (searchString) => {
+const searchGiphy = (searchString, div) => {
     const API_KEY = "7GyDNRXixRNrwh8PGwOdMCLZfNoM2Wf6"
 
     fetch("https://api.giphy.com/v1/gifs/search?api_key="+API_KEY+"&q="+searchString)
     .then(res => res.json())
     .then((data) => {
-        displayGiphy(data)})
+        displayGiphy(data, div)})
 }
 
 // For the test suite
