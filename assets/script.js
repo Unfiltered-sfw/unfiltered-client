@@ -68,6 +68,9 @@ const postNewEntry = (suffix, objToSend) => {
             body: JSON.stringify(objToSend)
     })
     .then(res => console.log(res))
+    .then(() => {
+        window.location.reload();
+    })
     .catch(err => console.log(err))
 }
 
@@ -100,13 +103,13 @@ const createNewEntry = (e) => {
         let doesExist = false
         id = Math.floor(Math.random()*100000)
         const newCommentsObject = {
-            postId: postId,
+            postId: parseInt(postId),
             name: '',
             comments: [
                 
             ]
         }
-
+        debugger
         const newComment = {
             id: id,
             content: e.target.elements[2].value,
