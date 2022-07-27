@@ -1,5 +1,5 @@
-const rootUrl = "http://localhost:3000/";
-
+const rootUrl = "https://unfiltered-app.herokuapp.com/";
+// const rootUrl = 'http://localhost:3000/'
 // set state of the app
 const state = {
     data: [
@@ -11,6 +11,7 @@ const state = {
 // reaction handlers
 const sendReaction = (reaction, count, id, type) => { 
     let suffix =''
+    let toSend = {}
     if( type == 'post') {
         suffix = 'posts'
         state.data.filter(post => {
@@ -18,6 +19,7 @@ const sendReaction = (reaction, count, id, type) => {
                 state.data[id].reaction[`${reaction}`] = count
             }            
         })
+        toSend = {data: state.data}
     } else if (type === 'comment') {
         suffix = 'comments'
         state.comments.filter((commentArr, index) => {
@@ -27,7 +29,10 @@ const sendReaction = (reaction, count, id, type) => {
                 }
             })
         })
+        toSend = {comments: state.comments}
     }  
+    console.log(toSend)
+    console.log(suffix)
 
     //TODO this will have to go to a separate fun for testing sendReaction
     fetch(rootUrl + suffix,
@@ -37,7 +42,7 @@ const sendReaction = (reaction, count, id, type) => {
         'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(state.comments)
+        body: JSON.stringify(toSend)
     })
     .then(res => {
         console.log(res)
@@ -147,6 +152,7 @@ const createNewEntry = (e) => {
 
 const assignCommentsToPosts = (data, comments) => {
     let arr = [];
+    console.log(data)
     for(let post of data) {
         let obj = {}
         obj.posts = post
@@ -210,6 +216,7 @@ const printContent = (data, comments) => {
 fetch(rootUrl+'posts')
     .then(res => res.json())
     .then(data => {
+        console.log(data)
         fetch(rootUrl+ "comments")
             .then(res => res.json())
             .then(comments => {
@@ -232,7 +239,7 @@ const postImage = (src) => {
             elements : [
                 {},
                 {},
-                { value : src}
+                { value : "<img src=" + src + " />"}
             ]
         }
     }  
@@ -242,13 +249,13 @@ const postImage = (src) => {
 const displayGiphy = (data, div) => {
     const arr = []
     for (let i=0; i<12; i++){
-        arr.push(data.data[i].embed_url)
+        arr.push(data.data[i].user["avatar_url"])
     }
     console.log(arr)
     const wrapper = document.createElement('div')
     wrapper.classList.add("flex-img")
     arr.map(href => {
-        wrapper.innerHTML += "<img role='button' onclick='postImage(this.src)' src='"+href+"'>"
+        wrapper.innerHTML += "<img width='250px' role='button' onclick='postImage(this.src)' src='"+href+"'>"
     })
     div.parentNode.insertBefore(wrapper, div.nextSibling)
     //TODO here paste the function from the guys
