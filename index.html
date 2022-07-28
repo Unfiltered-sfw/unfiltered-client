@@ -9,6 +9,11 @@
 
     <script src="https://kit.fontawesome.com/67eb281458.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
+    <script src="./assets/state.js" defer></script>
+    <script src="./assets/listeners.js" defer></script>
+    <script src="./assets/handlebars.js" defer></script>
+    <script src="./assets/reactions.js" defer></script>
+    <script src="./assets/newEntry.js" defer></script>
     <script src="./assets/script.js" defer></script>
 
 
@@ -49,15 +54,7 @@
                         <article>
                             <div class="post-content">
                                 <h3>{{ posts.title }}</h3>
-                                <ul class="post-meta list-inline">
-                                    <li class="list-inline-item">
-                                        <i class="fa fa-calendar-o"></i> <a href="#">29 June 2017</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <i class="fa fa-tags"></i> <a href="#">tag1</a>
-                                        <i class="fa fa-tags"></i> <a href="#">tag2</a>
-                                    </li>
-                                </ul>
+
                                 <p>{{ posts.post }}</p>
                             </div>
                             <div class="reactions-count post-reactions" >
@@ -81,7 +78,6 @@
                     <div class="media mb40 flex-column" id="comment-template">
                         {{#each posts.comments}}
                         <div class="media-body">
-                            {{log isGiphy}}
                             {{#if isGiphy}}
                             <img src="{{content}}" alt="giphy" width="200px">
                             {{else }}
@@ -107,7 +103,7 @@
                             <label>Comment</label>
                             <textarea class="form-control" rows="3" placeholder="Comment (max 300 characters)" maxlength="300"></textarea>
                         </div>
-                        <div class="giphy form-group  m-4 ">
+                        <div class="giphy giphy-form form-group  m-4 ">
                             <label>Search giphy</label>
                             <input type="text" class="form-control searchString" placeholder="Search" data-giphy="giphy-search" >
                             <button type="button" class="btn btn-secondary btn-lg giphy-button" data-giphy="giphy-button">Search</button>
