@@ -21,11 +21,13 @@ const sendReaction = (reaction, count, id, type) => {
         })
         toSend = {data: state.data}
     } else if (type === 'comment') {
+        // debugger
         suffix = 'comments'
         state.comments.filter((commentArr, index) => {
-            commentArr.comments.filter(comment => {
-                if( comment.id == id) {
-                    state.comments[index].comments[id].reaction[`${reaction}`] = count
+            commentArr.comments.filter((comment, ind) => {
+                const intId = parseInt(id)
+                if( comment.id == intId) {
+                    state.comments[index].comments[ind].reaction[`${reaction}`] = count
                 }
             })
         })
@@ -81,6 +83,7 @@ const postNewEntry = (suffix, objToSend) => {
 
 // Set new post handlers
 const createNewEntry = (e) => {
+    console.log(e.target)
     if (typeof e.preventDefault == 'function') {
         e.preventDefault();
     }
@@ -116,14 +119,19 @@ const createNewEntry = (e) => {
                 
             ]
         }
+        console.log(e.target.elements)
         const newComment = {
             id: id,
-            content: e.target.elements[2].value,
+            content: e.target.elements[0].value,
+            isGiphy: undefined,
             reaction: {
                 heart: 0,
                 like: 0,
                 dislike: 0,
             }
+        }
+        if (typeof e.target.dataset.isGiphy != 'undefined') {
+            newComment.isGiphy = true
         }
         state.comments.filter((post, index) => {
             if(post.postId == postId) {
@@ -149,6 +157,9 @@ const createNewEntry = (e) => {
 
 
 // Handlebars handlers
+Handlebars.registerHelper('isdefined', function (value) {
+    return value !== undefined;
+  });
 
 const assignCommentsToPosts = (data, comments) => {
     let arr = [];
@@ -234,12 +245,11 @@ const postImage = (src) => {
         target: {
             dataset: {
                 type: 'comment',
-                belongs: 0
+                belongs: 0,
+                isGiphy: true,
             },
             elements : [
-                {},
-                {},
-                { value : "<img src=" + src + " />"}
+                { value : src }
             ]
         }
     }  
@@ -247,9 +257,14 @@ const postImage = (src) => {
 }
     
 const displayGiphy = (data, div) => {
+    console.log(data)
     const arr = []
     for (let i=0; i<12; i++){
-        arr.push(data.data[i].user["avatar_url"])
+        if (typeof data.data[i].user != 'undefined') {
+
+            arr.push(data.data[i].user["avatar_url"])
+            console.log(data.data[i].user["avatar_url"])
+        }
     }
     console.log(arr)
     const wrapper = document.createElement('div')
@@ -269,7 +284,12 @@ const searchGiphy = (searchString, div) => {
     fetch("https://api.giphy.com/v1/gifs/search?api_key="+API_KEY+"&q="+searchString)
     .then(res => res.json())
     .then((data) => {
-        displayGiphy(data, div)})
+        if (data.data.length > 0) {
+            displayGiphy(data, div)
+        } else {
+            alert('Sorry, no giphy for this phrase')
+        }
+    })
 }
 
 // For the test suite
