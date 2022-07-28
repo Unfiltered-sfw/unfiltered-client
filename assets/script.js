@@ -46,17 +46,19 @@ fetch(rootUrl+'posts')
         
 
         
-const postImage = (src) => {
-    console.log(src)
+const postImage = (obj) => {
+    console.log(parseInt(obj.dataset.belongs))
+    const postId = parseInt(obj.dataset.belongs)
+    
     const e = {
         target: {
             dataset: {
                 type: 'comment',
-                belongs: 0,
+                belongs: postId,
                 isGiphy: true,
             },
             elements : [
-                { value : src }
+                { value : obj.src }
             ]
         }
     }  
@@ -64,7 +66,8 @@ const postImage = (src) => {
 }
     
 const displayGiphy = (data, div) => {
-    console.log(data)
+    const postId = div.parentElement.dataset.belongs
+    console.log(div.parentElement.dataset.belongs)
     const arr = []
     for (let i=0; i<12; i++){
         if (typeof data.data[i].user != 'undefined') {
@@ -77,7 +80,7 @@ const displayGiphy = (data, div) => {
     const wrapper = document.createElement('div')
     wrapper.classList.add("flex-img")
     arr.map(href => {
-        wrapper.innerHTML += "<img width='250px' role='button' onclick='postImage(this.src)' src='"+href+"'>"
+        wrapper.innerHTML += "<img data-belongs='"+postId+"' width='250px' role='button' onclick='postImage(this)' src='"+href+"'>"
     })
     div.parentNode.insertBefore(wrapper, div.nextSibling)
     //TODO here paste the function from the guys
