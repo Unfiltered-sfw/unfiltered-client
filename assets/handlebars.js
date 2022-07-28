@@ -1,6 +1,5 @@
 const assignCommentsToPosts = (data, comments) => {
     let arr = [];
-    console.log(data)
     for(let post of data) {
         let obj = {}
         obj.posts = post

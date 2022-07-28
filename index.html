@@ -53,15 +53,7 @@
                         <article>
                             <div class="post-content">
                                 <h3>{{ posts.title }}</h3>
-                                <ul class="post-meta list-inline">
-                                    <li class="list-inline-item">
-                                        <i class="fa fa-calendar-o"></i> <a href="#">29 June 2017</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <i class="fa fa-tags"></i> <a href="#">tag1</a>
-                                        <i class="fa fa-tags"></i> <a href="#">tag2</a>
-                                    </li>
-                                </ul>
+
                                 <p>{{ posts.post }}</p>
                             </div>
                             <div class="reactions-count post-reactions" >
@@ -85,7 +77,6 @@
                     <div class="media mb40 flex-column" id="comment-template">
                         {{#each posts.comments}}
                         <div class="media-body">
-                            {{log isGiphy}}
                             {{#if isGiphy}}
                             <img src="{{content}}" alt="giphy" width="200px">
                             {{else }}

@@ -35,7 +35,6 @@ const postNewEntry = (suffix, objToSend) => {
 fetch(rootUrl+'posts')
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         fetch(rootUrl+ "comments")
             .then(res => res.json())
             .then(comments => {
