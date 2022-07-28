@@ -1,14 +1,60 @@
-const rootUrl = "https://unfiltered-app.herokuapp.com/";
-// const rootUrl = 'http://localhost:3000/'
-// set state of the app
-const state = {
-    data: [
-    ],
-    comments: [
-    ]
+
+// reaction handlers
+const sendReaction = (reaction, count, id, type) => { 
+    let suffix =''
+    let toSend = {}
+    if( type == 'post') {
+        suffix = 'posts'
+        state.data.filter(post => {
+            if( post.id == id) {
+                state.data[id].reaction[`${reaction}`] = count
+            }            
+        })
+        toSend = {data: state.data}
+    } else if (type === 'comment') {
+        // debugger
+        suffix = 'comments'
+        state.comments.filter((commentArr, index) => {
+            commentArr.comments.filter((comment, ind) => {
+                const intId = parseInt(id)
+                if( comment.id == intId) {
+                    state.comments[index].comments[ind].reaction[`${reaction}`] = count
+                }
+            })
+        })
+        toSend = {comments: state.comments}
+    }  
+    console.log(toSend)
+    console.log(suffix)
+
+    //TODO this will have to go to a separate fun for testing sendReaction
+    fetch(rootUrl + suffix,
+    {
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(toSend)
+    })
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => console.log(err))
 }
 
 
+const addReactionToPost = (e) => {
+    e.preventDefault();
+    const span = e.currentTarget.querySelector('span')
+    const reaction = span.dataset.reaction
+    const id = span.dataset.id
+    const type = span.dataset.type
+    const currentCount = parseInt(span.innerText)
+    const newCount = currentCount + 1
+    span.textContent = newCount
+    sendReaction(reaction, newCount, id, type)
+}
 
 const postNewEntry = (suffix, objToSend) => {
     fetch(rootUrl + suffix, {
@@ -25,6 +71,7 @@ const postNewEntry = (suffix, objToSend) => {
     })
     .catch(err => console.log(err))
 }
+
 
 // Set new post handlers
 const createNewEntry = (e) => {
@@ -102,10 +149,10 @@ const createNewEntry = (e) => {
 
 
 // Handlebars handlers
-
+/*
 Handlebars.registerHelper('isdefined', function (value) {
     return value !== undefined;
-  });
+  });*/
 
 const assignCommentsToPosts = (data, comments) => {
     let arr = [];
@@ -169,20 +216,7 @@ const printContent = (data, comments) => {
     setFormsEventListeners()
 }
 
-// Fetch data
-fetch(rootUrl+'posts')
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        fetch(rootUrl+ "comments")
-            .then(res => res.json())
-            .then(comments => {
-                state.data = data.data
-                state.comments = comments.comments
-                printContent(data, comments)
-            })
-        })
-        
+// Fetch d
 
         
 const postImage = (src) => {
@@ -238,12 +272,11 @@ const searchGiphy = (searchString, div) => {
     })
 }
 
-// For the test suite
-if (typeof module !== 'undefined') {
-    module.exports = {
-        sendReaction,
-        addReactionToPost,
-        assignCommentsToPosts
-    }
-}
 
+
+
+module.exports={ postNewEntry,
+createNewEntry, assignCommentsToPosts, postImage, printContent
+,setReactionListeners,
+displayGiphy, setGiphyEventListeners, setFormsEventListeners,
+searchGiphy}
