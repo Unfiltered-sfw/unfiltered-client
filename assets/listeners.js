@@ -33,7 +33,7 @@ const setReactionListeners = () => {
 // For the test suite
 if (typeof module !== 'undefined') {
     module.exports = {
-        sendReaction,
+        setFormsEventListeners,
         setGiphyEventListeners,
         setReactionListeners
     }
