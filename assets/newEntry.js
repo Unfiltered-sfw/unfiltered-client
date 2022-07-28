@@ -75,6 +75,7 @@ const createNewEntry = (e) => {
 // For the test suite
 if (typeof module !== 'undefined') {
     module.exports = {
+        createNewEntry
 
     }
 }

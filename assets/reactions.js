@@ -41,6 +41,7 @@ const addReactionToPost = (e) => {
 // For the test suite
 if (typeof module !== 'undefined') {
     module.exports = {
-
+        sendReaction,
+        addReactionToPost
     }
 }
